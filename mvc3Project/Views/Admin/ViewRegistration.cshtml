@@ -1,32 +1,4 @@
-﻿@* @{
-    Layout = "~/Views/shared/_AdminLayout.cshtml";
-}
-@model IEnumerable<Admin>
-
-<form method="post">
-    <div class="col-12">
-
-        <input asp-for="Rid" type="hidden" id="id" class="form-control" />
-        <label asp-for="Name"></label><br />
-
-        <input asp-for="Name" class="form-control" /><br />
-        <label asp-for="Email"></label><br />
-
-        <input asp-for="Email" class="form-control" /><br />
-        <label asp-for="Password"></label><br />
-
-        <input asp-for="Password" class="form-control" /><br />
-        <label asp-for="Type"></label><br />
-
-        <input asp-for="Type" class="form-control" /><br />
-        <label asp-for="Status"></label><br />
-
-        <input asp-for="Status" class="form-control" /><br />
-        @* <button type="submit" class="btn btn-success" asp-action="Edit" asp-controller="Category">Create</button> *@
-@*     </div>
-</form> *@ 
-
-@{
+﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -52,12 +24,12 @@
                                 <th>Email</th>
                                 <th>Type</th>
                                 <th>Status</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (Model != null && Model.Any())
-                            {
-                                foreach (var item in Model)
+                            
+                               @foreach (var item in Model)
                                 {
                                     <tr>
                                         <td>@item.Rid</td>
@@ -65,17 +37,13 @@
                                         <td>@item.Email</td>
                                         <td>@item.Type</td>
                                         <td>@item.Status</td>
+
+                                        <td><a asp-controller="Admin" asp-action="Approve" class="btn btn-primary" asp-route-id="@item.Rid">Approve</a></td>
                                     </tr>
                                 }
-                            }
-                            else
-                            {
-                                <tr>
-                                    <td colspan="5" class="text-center text-danger">
-                                        No records found
-                                    </td>
-                                </tr>
-                            }
+                           
+                            
+                           
                         </tbody>
                     </table>
                 </div>

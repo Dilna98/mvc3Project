@@ -32,5 +32,16 @@ namespace mvc3Project.Controllers
 
            return View(data);
         }
+        public async Task<IActionResult> Approve(int id)
+        {
+            var data = await _context.Register.FindAsync(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            data.Status = " Approved";
+            await _context.SaveChangesAsync();
+            return RedirectToAction("AdminIndex");
+        }
     }
 }

@@ -3,6 +3,13 @@
 @{
     Layout = "~/Views/shared/LoginLayout.cshtml";
 }
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-danger">
+        alert("@TempData["Message"]);
+    </div>
+}
 <!-- Login Page -->
 <div class="login-container">
     <form  method="post" class="login-form">

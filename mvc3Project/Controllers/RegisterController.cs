@@ -45,7 +45,7 @@ namespace mvc3Project.Controllers
         public IActionResult Log(Login r)
         {
             var type = "";
-            var filterd = from l in _context.Register where l.Email == r.Email && l.Password == r.Password select l;
+            var filterd = from l in _context.Register where l.Email == r.Email && l.Password == r.Password  && l.Status == "Approved" select l;
             foreach (var p in filterd)
             {
                 type = p.Type;
@@ -58,6 +58,8 @@ namespace mvc3Project.Controllers
                     return new RedirectResult(url: "/Admin/AdminIndex", permanent: true, preserveMethod: true);
                 }
             }
+
+            TempData["Message"] = "invalid username and password";
             return Ok();
         }
         
