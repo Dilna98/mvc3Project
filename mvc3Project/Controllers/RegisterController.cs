@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using mvc3Project.DATA;
 using mvc3Project.Models;
+using System.Diagnostics.Eventing.Reader;
+using Microsoft.AspNetCore.Http;
 
 namespace mvc3Project.Controllers
 {
@@ -45,9 +47,11 @@ namespace mvc3Project.Controllers
         public IActionResult Log(Login r)
         {
             var type = "";
-            var filterd = from l in _context.Register where l.Email == r.Email && l.Password == r.Password  && l.Status == "Approved" select l;
+            var filterd = from l in _context.Register where l.Email == r.Email && l.Password == r.Password && l.Status == "Approved"  select l;
             foreach (var p in filterd)
             {
+                HttpContext.Session.SetInt32("id", p.Rid);
+
                 type = p.Type;
                 if (type == "staff")
                 {
@@ -60,7 +64,7 @@ namespace mvc3Project.Controllers
             }
 
             TempData["Message"] = "invalid username and password";
-            return Ok();
+            return View("login");
         }
         
     }

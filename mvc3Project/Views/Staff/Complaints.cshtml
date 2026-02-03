@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_StaffLayout.cshtml";
+}
+@model mvc3Project.Models.Complaints
+
+
+<div class="card">
+    <div class="card-body register-card-body">
+       
+
+        <form asp-action="Complaints" method="post" asp-asp-controller="Staff">
+            <div class="input-group mb-3">
+                <input asp-for="Complaint" type="text" class="form-control" placeholder="Complaints">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
+            </div>
+           
+            <input asp-for="Replay" type="hidden" class="form-control" placeholder="Replay" value="pending">
+            
+            <div class="row">
+                
+                <!-- /.col -->
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        
+
+        
+    </div>
+    <!-- /.form-box -->
+</div>

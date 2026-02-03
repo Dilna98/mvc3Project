@@ -218,9 +218,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a asp-controller="Staff" asp-action="Complaints" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
+                                        <p>Complaints</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -364,7 +364,7 @@
 
                     <div class="row">
                         <!-- Left col -->
-                        <section class="col-lg-7 connectedSortable">
+                        @RenderBody()
 
 
                     </div>
@@ -376,7 +376,7 @@
     </div>
 
     <!-- /.direct-chat-msg -->
-    @RenderBody()
+   
     </div>
 
 
@@ -387,7 +387,7 @@
 
 
 
-    </section>
+    
 
 
     <!-- right col -->

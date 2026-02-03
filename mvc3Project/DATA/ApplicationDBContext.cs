@@ -13,5 +13,7 @@ namespace mvc3Project.DATA
 
         }
         public DbSet<Register> Register { get; set; }
+
+        public DbSet<Complaints> Complaints { get; set; }
     }
 }
