@@ -1,0 +1,26 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model Complaints
+
+            <form asp-action="Reply" method="post">
+                <input type="hidden" asp-for="Cid" /> 
+
+                <div class="mb-3">
+                    <label class="form-label">Complaint</label>
+                    <textarea class="form-control" asp-for="Complaint">Complaint</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Your Reply</label>
+                    <textarea class="form-control"  asp-for="Replay" >Reply</textarea>
+                </div>
+
+               
+               <button class="button-submit" asp-controller="Admin" asp-action="Replay">Submit</button>
+
+
+            </form>
+        

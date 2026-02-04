@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using mvc3Project.DATA;
 using mvc3Project.Models;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 namespace mvc3Project.Controllers
@@ -64,5 +65,31 @@ namespace mvc3Project.Controllers
                            };
             return View(joinData.ToList());
         }
+
+        public IActionResult Replay(int id)
+        {
+            var data = _context.Complaints.FirstOrDefault(c => c.Cid == id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult Replay(int id, string Replay, Complaints obj)
+        {
+            var data = _context.Complaints.FirstOrDefault(c => c.Cid == id);
+            if(data == null)
+            {
+                return NotFound();
+            }
+            data.Replay = Replay;
+
+
+            
+            _context.SaveChanges();
+            return RedirectToAction("ViewComplaints");
+        }
+
     }
 }
